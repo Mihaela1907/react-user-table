@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 const path = require("path");
 
 /*We are basically telling webpack to take index.js from entry. Then check for all file extensions in resolve. 
@@ -71,7 +73,14 @@ module.exports={
             {
                 test: /\.(js|jsx)$/,    //kind of file extension this rule should look for and apply in test
                 exclude: /node_modules/, //folder to be excluded
-                use:  'babel-loader' //loader which we are going to use
+                use: [
+                    //loader which we are going to use
+                    'babel-loader',
+                    // Creates `style` nodes from JS strings
+                    "style-loader",
+                    // Compiles Sass to CSS
+                    "sass-loader",
+                ],
             }
         ]
     },
