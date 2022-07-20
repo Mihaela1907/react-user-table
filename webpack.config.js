@@ -71,17 +71,38 @@ module.exports={
          */
         rules: [
             {
-                test: /\.(js|jsx)$/,    //kind of file extension this rule should look for and apply in test
+                test: [ /\.(js|jsx)$/],   //kind of file extension this rule should look for and apply in test
+                exclude: /node_modules/, //folder to be excluded
+                use: [
+                    //loader which we are going to use
+                    'babel-loader'
+                ],
+            },
+            {
+                test: [ /\.scss$/ ],   //kind of file extension this rule should look for and apply in test
                 exclude: /node_modules/, //folder to be excluded
                 use: [
                     //loader which we are going to use
                     'babel-loader',
                     // Creates `style` nodes from JS strings
                     "style-loader",
+                    // Translates CSS into CommonJS
+                    "css-loader",
                     // Compiles Sass to CSS
                     "sass-loader",
                 ],
-            }
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                        name: 'images/[hash]-[name].[ext]',
+                    },
+                  },
+                ],
+            },
         ]
     },
     plugins: [

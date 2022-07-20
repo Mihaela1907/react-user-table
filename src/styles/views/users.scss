@@ -1,0 +1,146 @@
+.users-container {
+    margin: auto;
+    padding: 50px 150px;
+    background-color: white;
+
+    h1 {
+        margin: 0;
+    }
+
+    .users-top-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        width: 1400px;
+        height: 48px;
+
+        background-color: #577399;
+
+        .search-users {
+            margin-left: 40px;
+            height: 32px;
+            border: none;
+            border-radius: 4px;
+            padding-left: 10px;
+
+            box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+        }
+
+        .add-user-button {
+            margin-right: 25px;
+            height: 32px;
+            border: none;
+            border-radius: 4px;
+            padding: 0 20px;
+
+            text-transform: uppercase;
+
+            background-color: #e7e7ee;
+            box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+            transition: transform .2s;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+                background-color: #3b4d68;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    .user-table {
+        margin: auto;
+        width: 1400px;
+
+        text-align: left;
+        border-collapse: collapse;
+        border: none;
+        box-shadow: 0 6px 8px rgba(16,27,30,0.4);
+
+        th, td {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        thead {
+            background-color: #577399;
+            color: #ffffff;
+
+            th {
+                text-transform: uppercase;
+            }
+
+            .user-info {
+                padding-left: 40px
+            }
+        }
+
+        tbody {
+            tr {
+                background-color: #e7e7ee;
+                transition: transform .2s;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.01);
+                    box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+                }
+
+                &:nth-of-type(even) {
+                    background-color: #F7F7FF;
+                }
+
+                .user-info {
+                    display: flex;
+                    align-items: center;
+                    padding-left: 40px;
+
+                    .user-avatar {
+                        margin-right: 10px;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+
+                        background-color: white;
+                    }
+
+                    p {
+                        margin: 5px 0;
+                    }
+
+                    // .email {
+                    // }
+
+                    .username {
+                        font-size: 12px;
+                        color: rgb(105, 105, 105);
+                    }
+                }
+
+                .remove-user {
+                    .remove-user-button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 30px;
+                        height: 30px;
+
+                        border: none;
+                        border-radius: 4px;
+
+                        background-color: #ff9790;
+                        box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+                        transition: transform .2s;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: scale(1.2);
+                            background-color: #FE5F55;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
