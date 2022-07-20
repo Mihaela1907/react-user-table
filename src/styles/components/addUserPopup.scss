@@ -12,11 +12,11 @@
     background-color: rgba(0,0,0,0.4);
 
     .add-user-popup {
-        margin: 15% auto;
+        margin: 10% auto;
         width: 35%;
         border-radius: 4px;
 
-        background-color: #fefefe;
+        background-color: $background;
         box-shadow: 0 10px 10px rgba(16,27,30,0.4);
 
         .add-user-popup-header {
@@ -28,11 +28,11 @@
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
             
-            background-color: #577399;
+            background-color: $mainBlue;
 
             p {
                 margin: 0 0 0 20px;
-                color: #FFFFFF;
+                color: $white;
                 text-transform: uppercase;
             }
 
@@ -42,18 +42,13 @@
                 margin-right: 20px;
                 height: 25px;
                 width: 25px;
-                border: none;
-                border-radius: 4px;
 
-                background-color: #9f9fa5;
-                box-shadow: 0 3px 6px rgba(16,27,30,0.4);
-                transition: transform .2s;
-                cursor: pointer;
+                background-color: $gray;
 
                 &:hover {
                     transform: scale(1.3);
-                    background-color: #3b4d68;
-                    color: #FFFFFF;
+                    background-color: $darkBlue;
+                    color: $white;
                 }
 
                 img {
@@ -68,6 +63,25 @@
             flex-direction: column;
             padding: 20px;
 
+            .avatar-upload {
+                margin: 0px auto 20px auto;
+
+                input {
+                    font-family: raleway;
+                    padding: 0;
+                    margin: 0;
+                    width: 200px;
+                    height: 25px;
+                    padding-top: 5px;
+                    text-align: center;
+                }
+
+                input[type=file]::file-selector-button {
+                    display: none;
+                }
+
+            }
+
             .user-full-name, .user-email, .user-info {
                 display: flex;
                 justify-content: space-between;
@@ -80,34 +94,38 @@
             input {
                 margin-bottom: 20px;
                 height: 30px;
-                border: 1px solid #3b4d68;
+                border: 1px solid $darkBlue;
                 border-radius: 4px;
                 padding-left: 10px;
-            }
-        }
 
-        .add-user-popup-footer {
-            display: flex;
-            justify-content: flex-end;
-            padding: 0 20px 20px 0;
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 8px 0px $mainBlue;
+                }
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
 
             button {
+                margin-left: auto;
+                width: 200px;
                 height: 32px;
-                border: none;
-                border-radius: 4px;
                 padding: 0 20px;
-    
-                text-transform: uppercase;
-    
-                background-color: #e7e7ee;
-                box-shadow: 0 3px 6px rgba(16,27,30,0.4);
-                transition: transform .2s;
-                cursor: pointer;
+                background-color: $lightBlue;
     
                 &:hover {
                     transform: scale(1.1);
-                    background-color: #3b4d68;
-                    color: #FFFFFF;
+                    background-color: $darkBlue;
+                    color: $white;
                 }
 
             }

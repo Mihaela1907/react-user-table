@@ -1,8 +1,38 @@
+@import './variables.scss';
 @import './views/users.scss';
 @import './views/userDetail.scss';
 
 @import './components/addUserPopup.scss';
 
+@font-face {
+    font-family: 'raleway';
+    src: url('./fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+h1, h2, h3, h4, h4, h6 {
+    margin: 10px 0;
+}
+
+p, td {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+html, body, #root {
+    height: 100%;
+    font-family: raleway;
+    color: $darkBlue
+}
+
 body {
     margin: 0;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+    text-transform: uppercase;
+    transition: transform .2s;
+    cursor: pointer;
 }

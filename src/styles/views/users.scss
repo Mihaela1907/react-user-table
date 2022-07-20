@@ -15,7 +15,7 @@
         width: 1400px;
         height: 48px;
 
-        background-color: #577399;
+        background-color: $mainBlue;
 
         .search-users {
             margin-left: 40px;
@@ -25,26 +25,24 @@
             padding-left: 10px;
 
             box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 4px 0px $lightBlue;
+            }
         }
 
         .add-user-button {
             margin-right: 25px;
             height: 32px;
-            border: none;
-            border-radius: 4px;
-            padding: 0 20px;
+            padding: 0 20px;            
 
-            text-transform: uppercase;
-
-            background-color: #e7e7ee;
-            box-shadow: 0 3px 6px rgba(16,27,30,0.4);
-            transition: transform .2s;
-            cursor: pointer;
+            background-color: $lightBlue;
 
             &:hover {
                 transform: scale(1.1);
-                background-color: #3b4d68;
-                color: #FFFFFF;
+                background-color: $darkBlue;
+                color: $white;
             }
         }
     }
@@ -64,8 +62,8 @@
         }
 
         thead {
-            background-color: #577399;
-            color: #ffffff;
+            background-color: $mainBlue;
+            color: $white;
 
             th {
                 text-transform: uppercase;
@@ -78,7 +76,7 @@
 
         tbody {
             tr {
-                background-color: #e7e7ee;
+                background-color: $lightBlue;
                 transition: transform .2s;
                 cursor: pointer;
 
@@ -88,7 +86,7 @@
                 }
 
                 &:nth-of-type(even) {
-                    background-color: #F7F7FF;
+                    background-color: $lighterBlue;
                 }
 
                 .user-info {
@@ -103,14 +101,13 @@
                         border-radius: 50%;
 
                         background-color: white;
+
+                        object-fit: cover;
                     }
 
                     p {
                         margin: 5px 0;
                     }
-
-                    // .email {
-                    // }
 
                     .username {
                         font-size: 12px;
@@ -126,17 +123,11 @@
                         width: 30px;
                         height: 30px;
 
-                        border: none;
-                        border-radius: 4px;
-
-                        background-color: #ff9790;
-                        box-shadow: 0 3px 6px rgba(16,27,30,0.4);
-                        transition: transform .2s;
-                        cursor: pointer;
+                        background-color: $lightRed;
 
                         &:hover {
                             transform: scale(1.2);
-                            background-color: #FE5F55;
+                            background-color: $red;
                         }
                     }
                 }
