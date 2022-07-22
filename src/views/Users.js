@@ -120,6 +120,10 @@ const Users = () => {
         
         const newUsers = [...users, newUser];
         setUsers(newUsers);
+
+        document.getElementById("add-user-popup").style.display = "none";
+        document.getElementById("add-user-form").reset();
+        document.getElementById("user-form-submit").disabled = true;
     };
 
     // Logic for filtering by name

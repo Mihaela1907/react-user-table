@@ -197,11 +197,7 @@ const AddUserPopup = ({formFunction, addUserFunction}) => {
                         </div>
 
                         <p className="required">*Required</p>
-                        <button 
-                            id="user-form-submit" 
-                            type="submit" 
-                            onClick={closePopup}
-                        >
+                        <button id="user-form-submit" type="submit">
                             Add user
                         </button>
                     </form>
