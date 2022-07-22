@@ -1,48 +1,127 @@
 .users-container {
     margin: auto;
-    padding: 50px 150px;
-    background-color: white;
+    min-height: 100%;
+    padding-bottom: 100px;
+    background-color: $lighterBlue;
 
     h1 {
         margin: 0;
     }
 
-    .users-top-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: auto;
-        width: 1400px;
-        height: 48px;
+    .data-loader {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
 
+        overflow: auto;
+
+        .loader {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 100%;
+            width: 100%;
+
+            font-size: 100px;
+            font-weight: 600;
+            text-shadow: 0 3px 6px rgb(16,27,30);
+
+            background-color: $lightBlue;
+            color: $mainBlue;
+        }
+    }
+
+    .users-header {
+        width: 100%;
+        height: 200px;
         background-color: $mainBlue;
+        box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+    }
 
-        .search-users {
-            margin-left: 40px;
-            height: 32px;
-            border: none;
-            border-radius: 4px;
-            padding-left: 10px;
+    .users-top-container {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: -120px auto 0 auto;
+        width: 1400px;
+        height: 55px;
 
-            box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+        background-color: $darkBlue;
 
-            &:focus {
-                outline: none;
-                box-shadow: 0 0 4px 0px $lightBlue;
+        .search-bar-container {
+            position: relative;
+            margin-right: 30px;
+            
+            .search-users {
+                height: 30px;
+                width: 200px;
+                border: none;
+                border-radius: 4px;
+                padding-left: 10px;
+
+                box-shadow: 0 3px 6px rgba(16,27,30,0.4);
+                transition: width .2s;
+
+                &.closed {
+                    width: 18px;
+
+                    &::-webkit-input-placeholder { /* WebKit browsers */
+                        opacity:  0;
+                    }
+
+                    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                        opacity:  0;
+                    }
+
+                    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                        opacity:  0;
+                    }
+
+                    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+                        opacity:  0;
+                    }
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 4px 0px $lightBlue;
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 4px;
+                right: 3px;
+
+                background-color: $white;
+                cursor: pointer;
             }
         }
 
         .add-user-button {
-            margin-right: 25px;
-            height: 32px;
-            padding: 0 20px;            
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: absolute;
+            top: 48px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
 
-            background-color: $lightBlue;
+            background-color: $gray;
 
             &:hover {
-                transform: scale(1.1);
-                background-color: $darkBlue;
+                transform: scale(1.2);
+                background-color: $mainBlue;
                 color: $white;
+            }
+
+            img {
+                transform: rotate(45deg);
             }
         }
     }
@@ -62,7 +141,7 @@
         }
 
         thead {
-            background-color: $mainBlue;
+            background-color: $darkBlue;
             color: $white;
 
             th {
@@ -116,6 +195,8 @@
                 }
 
                 .remove-user {
+                    width: 40px;
+
                     .remove-user-button {
                         display: flex;
                         align-items: center;

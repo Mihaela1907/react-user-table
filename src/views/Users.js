@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import axios from 'axios';
+import ReactTooltip from "react-tooltip";
 
 import DeleteIcon from '../assets/x.svg';
+import SearchIcon from '../assets/search.svg';
 import Avatar from '../assets/avatar.svg';
 
 import AddUserPopup from '../components/AddUserPopup.js';
@@ -11,15 +13,18 @@ import AddUserPopup from '../components/AddUserPopup.js';
 const Users = () => {
     // Fetching data and setting it to 'users' variable
     const [users, setUsers] = useState([])
+    const [loader, setLoader] = useState(false);
 
     const fetchData = () => {
-      fetch("https://random-data-api.com/api/users/random_user?size=10")
+        setLoader(true);
+
+        fetch("https://random-data-api.com/api/users/random_user?size=20")
         .then(response => {
           return response.json()
         })
-  
         .then(data => {
           setUsers(data)
+          setLoader(false);
         })
     }
   
@@ -34,7 +39,11 @@ const Users = () => {
         // Find user object by id in users array
         const userDetail = users.find(user => user.id === userId)
 
-        navigate('/user-detail', { state: { userData: userDetail}});
+        if(userDetail.gender) {
+            navigate('/user-detail', { state: { userData: userDetail}});
+        } else {
+            alert('You clicked a new user which is missing user details.')
+        }
     };
 
     // Delete user logic
@@ -80,9 +89,7 @@ const Users = () => {
                 },
             };
 
-            axios.post(url, formData, config).then((response) => {
-                console.log(response.data);
-            });
+            axios.post(url, formData, config)
         } else {
             // Other form data
             newFormData[fieldName] = fieldValue;
@@ -139,13 +146,40 @@ const Users = () => {
             }
         }
     };
+
+    const openSearchBar = () => {
+        const searchBar = document.getElementById("table-filter-input");
+
+        searchBar.classList.toggle("closed");
+    };
     
     return (
         <div className="users-container">
+                <div className="users-header">
+                </div>
+
+            {loader && (
+                <div className="data-loader">
+                    <div className="loader">
+                        Loading...
+                    </div>
+                </div>
+            )}
+
             <div className="users-top-container">
-                <input id="table-filter-input" placeholder="Search table by name..." className="search-users" 
-                    onChange={handleTableFilter}>
-                </input>
+                <div className="search-bar-container">
+                    <input id="table-filter-input" placeholder="Search table by name..." className="search-users closed" 
+                        onChange={handleTableFilter}
+                    >
+                    </input>
+
+                    <img src={SearchIcon} onClick={openSearchBar}
+                        data-tip data-for="searchTip"
+                    ></img>
+                    <ReactTooltip id="searchTip" place="top" effect="solid">
+                        Click to toggle search bar
+                    </ReactTooltip>
+                </div>
 
                 <AddUserPopup formFunction={handleAddFormChange} addUserFunction={handleAddUser}/>
             </div>
@@ -173,10 +207,10 @@ const Users = () => {
                                         <p className="username">@{user.username}</p>
                                     </div>
                                 </td>
-                                <td>{user.last_name} {user.first_name}</td>
-                                <td>{user.employment.title}</td>
-                                <td>{user.address.city}</td>
-                                <td>{user.phone_number}</td>
+                                <td  onClick={() => goToUserDetail(user.id)}>{user.last_name} {user.first_name}</td>
+                                <td  onClick={() => goToUserDetail(user.id)}>{user.employment.title}</td>
+                                <td  onClick={() => goToUserDetail(user.id)}>{user.address.city}</td>
+                                <td  onClick={() => goToUserDetail(user.id)}>{user.phone_number}</td>
                                 <td className="remove-user">
                                     <button className="remove-user-button" onClick={() => deleteUser(user.id)}>
                                         <img src={DeleteIcon}></img>

@@ -12,8 +12,6 @@ const UserDetail = (userData) => {
     const { state } = useLocation();
     const user = state.UserData
 
-    console.log(state.userData)
-
     return (
         <div className="user-detail-container">
             <div className="user-detail-header">
@@ -82,10 +80,6 @@ const UserDetail = (userData) => {
                         </table>
                     </div>
                 </div>
-            </div>
-
-            <div className="user-detail-footer">
-
             </div>
         </div>
     );

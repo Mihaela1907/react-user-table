@@ -13,11 +13,19 @@
 
     .add-user-popup {
         margin: 10% auto;
-        width: 35%;
+        width: 675px;
         border-radius: 4px;
 
         background-color: $background;
         box-shadow: 0 10px 10px rgba(16,27,30,0.4);
+
+        p {
+            margin: 0;
+
+            &.required {
+                margin-top: 10px;
+            }
+        }
 
         .add-user-popup-header {
             display: flex;
@@ -63,8 +71,15 @@
             flex-direction: column;
             padding: 20px;
 
+            .validation-error-messages {
+                margin-top: 5px;
+                width: 46%;
+                color: $lightRed;
+            }
+
             .avatar-upload {
-                margin: 0px auto 20px auto;
+                margin: 0px auto;
+                text-align: center;
 
                 input {
                     font-family: raleway;
@@ -82,17 +97,42 @@
 
             }
 
-            .user-full-name, .user-email, .user-info {
+            .username-email-container {
                 display: flex;
                 justify-content: space-between;
+
+                .user-email, .user-username {
+                    width: 48%;
+                }
+
+                input, p {
+                    width: 96%;
+                }
+            }  
+
+            .user-full-name, .user-info {
+                display: flex;
+                justify-content: space-between; 
 
                 input {
                     width: 46%;
                 }
+
+                .phone-number-container {
+                    width: 48%;
+
+                    input {
+                        width: 95%;
+                    }
+
+                    p {
+                        width: 100%;
+                    }
+                }
             }
 
             input {
-                margin-bottom: 20px;
+                margin-top: 20px;
                 height: 30px;
                 border: 1px solid $darkBlue;
                 border-radius: 4px;
@@ -104,13 +144,14 @@
                 }
             }
 
+            // Remove input type number spinner: Chrome, Safari
             input::-webkit-outer-spin-button,
             input::-webkit-inner-spin-button {
                 -webkit-appearance: none;
                 margin: 0;
             }
 
-            /* Firefox */
+            // Firefox
             input[type=number] {
                 -moz-appearance: textfield;
             }
@@ -121,8 +162,14 @@
                 height: 32px;
                 padding: 0 20px;
                 background-color: $lightBlue;
+
+                &:disabled {
+                    background-color: $gray;
+                    color: $white;
+                    cursor: not-allowed;
+                }
     
-                &:hover {
+                &:hover:not(:disabled) {
                     transform: scale(1.1);
                     background-color: $darkBlue;
                     color: $white;
